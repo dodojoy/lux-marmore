@@ -1,9 +1,7 @@
 import { useState } from "react";
 import useWindowDimensions from "../hooks/useWindowDimension";
-import headerlogomobile from "./../assets/headerlogomobile.svg";
-import headerlogodesktop from "./../assets/headerlogodesktop.svg";
 
-function Header() {
+export default function Header() {
   const { width } = useWindowDimensions();
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = width < 1024 ? true : false;
@@ -19,8 +17,8 @@ function Header() {
     <header className="bg-yellow w-full pt-12 fixed top-0 left-0 flex flex-col lg:pt-0">
       <nav
         className={`${
-          isOpen ? "bg-white h-[90%]" : ""
-        } lg:bg-inherit absolute top-0 right-0 w-4/5 flex flex-col items-center lg:relative lg:justify-center lg:self-center lg:bg-none`}
+          isOpen ? "bg-white h-screen w-screen" : ""
+        } lg:bg-inherit absolute top-0 right-0 lg:h-full lg:w-4/5 flex flex-col items-center lg:relative lg:justify-center lg:self-center lg:bg-none`}
       >
         {isMobile ? (
           <div
@@ -76,17 +74,6 @@ function Header() {
           </ul>
         ) : null}
       </nav>
-      <div>
-        <img
-          className="h-full w-full"
-          w-full
-          h-full
-          src={isMobile ? headerlogomobile : headerlogodesktop}
-          alt="bancada de cozinha com a logo da lux marmore centralizada"
-        />
-      </div>
     </header>
   );
 }
-
-export default Header;
